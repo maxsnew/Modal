@@ -104,6 +104,25 @@
  (judgment-holds
   (tc ·
       ·
+      (λ (bx : (□ A))
+         (let [box x bx]
+           x))
+      ((□ A) → A))))
+
+(check-true
+ (judgment-holds
+  (tc ·
+      ·
+      (λ (bx : (□ A))
+         (let [box x bx]
+           (box (box x))))
+      ((□ A) → (□ (□ A))))
+  ))
+
+(check-true
+ (judgment-holds
+  (tc ·
+      ·
       (λ (bp : (□ (A → B)))
          (λ (bq : (□ A))
             (let [box p bp]
